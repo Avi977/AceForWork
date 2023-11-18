@@ -1,12 +1,19 @@
-/*!
-* Start Bootstrap - Grayscale v7.0.6 (https://startbootstrap.com/theme/grayscale)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
-
+const observer= new IntersectionObserver((entries)=> {
+    entries.forEach((entry) => {
+        console.log(entry)
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+                }
+        else{
+            entry.target.classList.remove('show');
+        }
+        
+    });
+});
+const hiddenElements= document.querySelectorAll('.hidden');
+hiddenElements.forEach((el)=>observer.observe(el));
+const slidingElements= document.querySelectorAll('.hidden-slide');
+slidingElements.forEach((el)=>observer.observe(el));
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
