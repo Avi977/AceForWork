@@ -11035,6 +11035,7 @@ body {
   }
   #mainNav.navbar-shrink {
     background-color: #fff;
+    opacity: 1;
   }
   #mainNav.navbar-shrink .navbar-brand {
     color: #000;
@@ -11640,4 +11641,7 @@ span:nth-child(9){
     left: initial;
     animation-delay: 4s;
     animation-duration: 3s;
+}
+.top-padding{
+  padding-top: 10%;
 }
