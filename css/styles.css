@@ -11119,7 +11119,7 @@ body {
 
 .about-section {
   padding-top: 10rem;
-  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
+  background: linear-gradient(to bottom, #000 0%, rgba(26, 61 ,73,1) 75%, rgba(0, 0, 0, 1) 100%);
 }
 .about-section p {
   margin-bottom: 5rem;
@@ -11643,5 +11643,8 @@ span:nth-child(9){
     animation-duration: 3s;
 }
 .top-padding{
-  padding-top: 10%;
+  padding-top: 15%;
+}
+.extra-padding{
+  padding-top: 25%;
 }
