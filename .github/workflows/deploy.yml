@@ -1,4 +1,4 @@
-name: Deploy to Hostinger (FTP, static site)
+name: Deploy to Hostinger (FTP, static site in subfolder)
 
 on:
   push:
@@ -11,30 +11,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Diagnose DNS/connectivity to your FTP host (masked in logs but still tested)
-      - name: Diagnose host resolution
-        shell: bash
-        env:
-          HOST: ${{ secrets.HOSTINGER_SERVER }}
-        run: |
-          echo "Checking DNS resolution for FTP host..."
-          getent ahosts "$HOST" || true
-          echo "Attempting TCP connect to FTPS (21)..."
-          timeout 5 bash -lc "cat < /dev/null > /dev/tcp/$HOST/21" && echo "Port 21 open" || echo "Port 21 not reachable"
-
-      - name: Deploy via FTPS
+      - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.3
         with:
-          server: ${{ secrets.HOSTINGER_SERVER }}   # use the host OR the Server IP from hPanel
+          server: ${{ secrets.HOSTINGER_SERVER }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
           protocol: ftps
           port: 21
-          local-dir: ./                              # MUST end with /
+          local-dir: ./new-website/portfolio/      # <-- your site folder (must end with /)
           server-dir: ${{ secrets.HOSTINGER_REMOTE_DIR }}/
           exclude: |
             **/.git*
             **/.github/**
             **/node_modules/**
             **/.DS_Store
-          # dangerous-clean-slate: false
