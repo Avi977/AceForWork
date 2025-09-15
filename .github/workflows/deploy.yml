@@ -11,19 +11,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP
+      # Diagnose DNS/connectivity to your FTP host (masked in logs but still tested)
+      - name: Diagnose host resolution
+        shell: bash
+        env:
+          HOST: ${{ secrets.HOSTINGER_SERVER }}
+        run: |
+          echo "Checking DNS resolution for FTP host..."
+          getent ahosts "$HOST" || true
+          echo "Attempting TCP connect to FTPS (21)..."
+          timeout 5 bash -lc "cat < /dev/null > /dev/tcp/$HOST/21" && echo "Port 21 open" || echo "Port 21 not reachable"
+
+      - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.3
         with:
-          server: ${{ secrets.HOSTINGER_SERVER }}
+          server: ${{ secrets.HOSTINGER_SERVER }}   # use the host OR the Server IP from hPanel
           username: ${{ secrets.HOSTINGER_USERNAME }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
-          local-dir: ./            # <-- needs trailing slash
-          server-dir: ${{ secrets.HOSTINGER_REMOTE_DIR }}/  # trailing slash recommended
-          # optional: ignore stuff you don't want uploaded
+          protocol: ftps
+          port: 21
+          local-dir: ./                              # MUST end with /
+          server-dir: ${{ secrets.HOSTINGER_REMOTE_DIR }}/
           exclude: |
             **/.git*
             **/.github/**
             **/node_modules/**
             **/.DS_Store
-          # optional: do a clean overwrite each deploy
-          # dangerous-clean-slate: true
+          # dangerous-clean-slate: false
