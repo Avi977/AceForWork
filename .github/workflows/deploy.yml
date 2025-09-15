@@ -1,13 +1,15 @@
 name: Deploy to Hostinger (FTP, static site)
+
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.3
@@ -15,5 +17,13 @@ jobs:
           server: ${{ secrets.HOSTINGER_SERVER }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
-          local-dir: .
-          server-dir: ${{ secrets.HOSTINGER_REMOTE_DIR }}
+          local-dir: ./            # <-- needs trailing slash
+          server-dir: ${{ secrets.HOSTINGER_REMOTE_DIR }}/  # trailing slash recommended
+          # optional: ignore stuff you don't want uploaded
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/node_modules/**
+            **/.DS_Store
+          # optional: do a clean overwrite each deploy
+          # dangerous-clean-slate: true
