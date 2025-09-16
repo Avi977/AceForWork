@@ -127,7 +127,7 @@ const Projects: React.FC = () => {
                     View Details
                   </button>
                   <a
-                    href={project.githubUrl}
+                    href="https://github.com/Avi977"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="liquid-glass-btn-outline font-medium py-2 px-4 text-center flex items-center justify-center"
@@ -187,23 +187,13 @@ const Projects: React.FC = () => {
 
                 <div className="flex space-x-4">
                   <a
-                    href={selectedProjectData.githubUrl}
+                    href="https://github.com/Avi977"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 liquid-glass-btn font-medium py-3 px-6 text-center"
+                    className="w-full liquid-glass-btn font-medium py-3 px-6 text-center"
                   >
                     View on GitHub
                   </a>
-                  {selectedProjectData.demoUrl && (
-                    <a
-                      href={selectedProjectData.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 liquid-glass-btn-outline font-medium py-3 px-6 text-center"
-                    >
-                      Live Demo
-                    </a>
-                  )}
                 </div>
               </div>
             </div>

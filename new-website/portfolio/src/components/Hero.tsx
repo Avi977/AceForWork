@@ -63,17 +63,7 @@ const Hero: React.FC = () => {
               onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
               className="group px-8 py-4 liquid-glass-btn font-semibold"
             >
-              <span className="flex items-center">
-                Get Started
-                <svg
-                  className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </span>
+              Get Started
             </button>
 
             <button
@@ -94,8 +84,7 @@ const Hero: React.FC = () => {
               <a
                 key={social.name}
                 href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(social.icon !== 'email' && { target: "_blank", rel: "noopener noreferrer" })}
                 className="w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 transform hover:scale-110"
                 title={social.name}
               >
@@ -119,12 +108,6 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
       </div>
     </section>
   );
