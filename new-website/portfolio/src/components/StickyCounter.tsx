@@ -111,7 +111,7 @@ const StickyCounter: React.FC = () => {
             </svg>
             <ScrollingDigits
               value={clickCount}
-              duration={800}
+              duration={1200}
               className="text-sm"
             />
             {getStatusIndicator()}

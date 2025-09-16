@@ -30,7 +30,7 @@ const ScrollingDigit: React.FC<DigitProps> = ({ digit, previousDigit, isAnimatin
         if (current !== end) {
           current = current < end ? current + 1 : current - 1;
           setCurrentDigit(current);
-          setTimeout(animate, stepDuration / 10);
+          setTimeout(animate, stepDuration / 3);
         }
       };
 
