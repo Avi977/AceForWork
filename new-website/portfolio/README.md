@@ -5,6 +5,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 ## 🚀 Features
 
 ### Enhanced Functionality
+
 - **Responsive Design**: Optimized for all device sizes (mobile, tablet, desktop)
 - **Interactive Navigation**: Smooth scrolling with active section highlighting
 - **Animated Hero Section**: Typing animation and dynamic background elements
@@ -13,6 +14,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 - **Modern UI/UX**: Clean, professional design with smooth animations
 
 ### Technical Improvements
+
 - **React + TypeScript**: Type-safe development with modern React patterns
 - **Tailwind CSS**: Utility-first CSS framework for rapid styling
 - **Component Architecture**: Modular, reusable components
@@ -45,21 +47,26 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v14 or higher)
 - npm or yarn
 
 ### Installation
+
 1. Navigate to the project directory:
+
    ```bash
    cd "new-website/portfolio"
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Start the development server:
+
    ```bash
    npm start
    ```
@@ -67,6 +74,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ### Build for Production
+
 ```bash
 npm run build
 ```
@@ -93,6 +101,7 @@ src/
 ## 🎯 Improvements Over Original
 
 ### Original Website
+
 - Static HTML/CSS/JS
 - Basic Bootstrap styling
 - Limited interactivity
@@ -100,6 +109,7 @@ src/
 - Minimal animations
 
 ### New React Website
+
 - ✅ Modern React architecture
 - ✅ Full responsive design
 - ✅ Interactive project modals
@@ -122,7 +132,7 @@ src/
 
 - **Email**: maharjanabhilekh@gmail.com
 - **Phone**: +1 (510) 881 3380
-- **LinkedIn**: [Abhilekh Maharjan](https://www.linkedin.com/in/abhilekh-maharjan-925b48265)
+- **LinkedIn**: [Abhilekh Maharjan](https://www.linkedin.com/in/acemzn/)
 - **GitHub**: [Avi977](https://github.com/Avi977)
 
 ## 📝 License
