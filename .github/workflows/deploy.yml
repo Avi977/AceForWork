@@ -28,6 +28,9 @@ jobs:
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
       - name: Build React app
+        env:
+          REACT_APP_JSONBIN_API_KEY: ${{ secrets.REACT_APP_JSONBIN_API_KEY }}
+          REACT_APP_JSONBIN_BIN_ID: ${{ secrets.REACT_APP_JSONBIN_BIN_ID }}
         run: npm run build
 
       - name: Upload build artifact

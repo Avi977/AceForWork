@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Resume from './components/Resume';
 import Footer from './components/Footer';
+import StickyCounter from './components/StickyCounter';
 
 const MainPage: React.FC = () => {
   useEffect(() => {
@@ -55,6 +56,7 @@ const MainPage: React.FC = () => {
         <Contact />
       </main>
       <Footer />
+      <StickyCounter />
     </div>
   );
 };

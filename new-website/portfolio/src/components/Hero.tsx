@@ -24,6 +24,7 @@ const Hero: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+
   return (
     <section
       id="home"
@@ -73,6 +74,7 @@ const Hero: React.FC = () => {
               View Projects
             </button>
           </div>
+
 
           {/* Social Links */}
           <div className="flex justify-center space-x-6 pt-8">
