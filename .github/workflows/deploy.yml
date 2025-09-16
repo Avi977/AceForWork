@@ -15,23 +15,16 @@ jobs:
       run:
         working-directory: new-website/portfolio
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
-      - name: Build React app
+      - name: Build
         run: npm run build
 
       - name: Upload build artifact
@@ -44,13 +37,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: site
           path: site
 
-      - name: Deploy via FTP
+      - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.3
         with:
           server: ${{ secrets.HOSTINGER_SERVER }}
@@ -65,3 +57,7 @@ jobs:
             **/.github/**
             **/node_modules/**
             **/.DS_Store
+            # uncomment next line if you keep a hand-edited .htaccess on the server
+            # **/.htaccess
+          # set to true if you want the server cleaned before upload
+          # dangerous-clean-slate: true
