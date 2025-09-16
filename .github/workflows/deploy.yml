@@ -2,11 +2,11 @@ name: Build & Deploy React to Hostinger (FTP)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
   BUILD_DIR: build
-  NODE_VERSION: '20'
+  NODE_VERSION: "20"
 
 jobs:
   build:
@@ -15,16 +15,19 @@ jobs:
       run:
         working-directory: new-website/portfolio
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
-      - name: Build
+      - name: Build React app
         run: npm run build
 
       - name: Upload build artifact
@@ -37,7 +40,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v4
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
         with:
           name: site
           path: site
@@ -45,19 +49,16 @@ jobs:
       - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.3
         with:
-          server: ${{ secrets.HOSTINGER_SERVER }}
-          username: ${{ secrets.HOSTINGER_USERNAME }}
-          password: ${{ secrets.HOSTINGER_PASSWORD }}
+          server: ${{ secrets.HOSTINGER_SERVER }} # Server IP from hPanel
+          username: ${{ secrets.HOSTINGER_USERNAME }} # e.g. u574235449.Ace
+          password: ${{ secrets.HOSTINGER_PASSWORD }} # FTP password you set
           protocol: ftps
           port: 21
-          local-dir: ./site/
-          server-dir: ${{ secrets.HOSTINGER_REMOTE_DIR }}/
+          local-dir: ./site/ # built React files
+          server-dir: / # root of this FTP user (public_html)
           exclude: |
             **/.git*
             **/.github/**
             **/node_modules/**
             **/.DS_Store
-            # uncomment next line if you keep a hand-edited .htaccess on the server
-            # **/.htaccess
-          # set to true if you want the server cleaned before upload
-          # dangerous-clean-slate: true
+            # **/.htaccess   # uncomment if**
