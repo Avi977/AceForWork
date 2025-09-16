@@ -88,7 +88,7 @@ const Hero: React.FC = () => {
           <div className="flex justify-center space-x-6 pt-8">
             {[
               { name: 'GitHub', url: 'https://github.com/Avi977', icon: 'github' },
-              { name: 'LinkedIn', url: 'https://www.linkedin.com/in/abhilekh-maharjan-925b48265', icon: 'linkedin' },
+              { name: 'LinkedIn', url: 'https://www.linkedin.com/in/acemzn/', icon: 'linkedin' },
               { name: 'Email', url: 'mailto:maharjanabhilekh@gmail.com', icon: 'email' }
             ].map((social) => (
               <a

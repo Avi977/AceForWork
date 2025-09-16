@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               {[
                 { name: 'GitHub', url: 'https://github.com/Avi977', icon: 'github' },
-                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/abhilekh-maharjan-925b48265', icon: 'linkedin' },
+                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/acemzn/', icon: 'linkedin' },
                 { name: 'Email', url: 'mailto:maharjanabhilekh@gmail.com', icon: 'email' }
               ].map((social) => (
                 <a
