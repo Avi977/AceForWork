@@ -29,9 +29,21 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Create mailto link with form data
+      const subject = encodeURIComponent(`Portfolio Contact: ${formData.subject}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        `Subject: ${formData.subject}\n\n` +
+        `Message:\n${formData.message}`
+      );
+      const mailtoLink = `mailto:${contactInfo.email}?subject=${subject}&body=${body}`;
+
+      // Open email client
+      window.open(mailtoLink);
+
+      // Show success message
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
@@ -51,7 +63,7 @@ const Contact: React.FC = () => {
       ),
       title: 'Email',
       detail: contactInfo.email,
-      link: `mailto:${contactInfo.email}`,
+      link: `mailto:${contactInfo.email}?subject=Let's Connect - Portfolio Inquiry&body=Hi Ace,%0D%0A%0D%0AI came across your portfolio and would like to discuss:%0D%0A%0D%0A[Please describe your project or inquiry here]%0D%0A%0D%0ABest regards,%0D%0A[Your name]`,
       description: 'Send me an email anytime'
     },
     {
