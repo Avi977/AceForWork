@@ -40,8 +40,8 @@ const Contact: React.FC = () => {
       );
       const mailtoLink = `mailto:${contactInfo.email}?subject=${subject}&body=${body}`;
 
-      // Open email client
-      window.open(mailtoLink);
+      // Open email client in new tab
+      window.open(mailtoLink, '_blank');
 
       // Show success message
       setSubmitStatus('success');
