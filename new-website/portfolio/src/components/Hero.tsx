@@ -50,7 +50,14 @@ const Hero: React.FC = () => {
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-bold text-white">
             <span className="block">Journey</span>
             <span className="text-2xl sm:text-3xl lg:text-4xl text-secondary block mt-4">
-              {displayText}
+              {displayText.startsWith('Hi') ? (
+                <>
+                  <span className="text-gray-400">Hi</span>
+                  {displayText.slice(2)}
+                </>
+              ) : (
+                displayText
+              )}
               {isTyping && <span className="animate-pulse">|</span>}
             </span>
           </h1>
